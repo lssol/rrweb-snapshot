@@ -6,6 +6,7 @@ import {
   INode,
   idNodeMap,
 } from './types';
+import {isClickable} from './utils'
 
 let _id = 1;
 
@@ -192,12 +193,13 @@ function serializeNode(
         attributes.rr_height = `${height}px`;
       }
       return {
-        type: NodeType.Element,
-        tagName,
-        attributes,
-        childNodes: [],
-        isSVG: isSVGElement(n as Element) || undefined,
-        needBlock,
+        type:        NodeType.Element,
+        tagName:     tagName,
+        isClickable: isClickable(n as HTMLElement),
+        attributes:  attributes,
+        childNodes:  [],
+        isSVG:       isSVGElement(n as Element) || undefined,
+        needBlock:   needBlock,
       };
     case n.TEXT_NODE:
       // The parent node may not be a html element which has a tagName attribute.

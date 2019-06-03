@@ -25,6 +25,7 @@ export type attributes = {
 export type elementNode = {
   type: NodeType.Element;
   tagName: string;
+  isClickable: boolean;
   attributes: attributes;
   childNodes: serializedNodeWithId[];
   isSVG?: true;
